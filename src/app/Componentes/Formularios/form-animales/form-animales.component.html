@@ -1,22 +1,28 @@
-<div class="container card" >
-    <div class="row card-body align-items-center">
-      <div class="col align-self-center">
-        <form>
-        
-           <div  class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput" placeholder="Escribe tu nombre...">
-            <label for="floatingInput">Nombre de animal </label>
-          </div><br>
+<div class="container mt-4">
+    <h1 class="text-center">Actulaizar Animal</h1>
+    <form [formGroup]="FormAnimales" (submit)="Enviar(FormAnimales.value)"> 
+        <div class="form-floating mb-3">
+        <input formControlName="Nombre" type="text" class="form-control" id="Nombre" value="{{ Datos }}" >
+        <label for="Nombre">Nuevo Animal</label>
+        </div>
+        <div *ngIf="FormAnimales.value.Nombre == ''">
+            <p class="text-center alert alert-danger">El Campo No Puede Estar Vacio</p>
+        </div>
+        <div class="form-floating mb-2">    
+            <select formControlName="Especie" *ngIf="datosEspecies"class="form-select" id="Especie" aria-label="Especie">
+                <option value="" selected>Opciones</option>
+              <option *ngFor="let especie of datosEspecies" [value]="especie.id">{{especie.nombre_especie}}</option>
+            </select>
+            <label for="Especie">Selecciona la especie </label>
+        </div>
+        <div class="d-grid gap-2" *ngIf="FormAnimales.value.Nombre == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="Nombre" type="submit">Enviar</button>        
+        </div>
 
-          <div  class="form-floating">
-            <input type="text" class="form-control" id="floatingPassword" placeholder="Escribe un usuario...">
-            <label for="floatingPassword">Especie </label>
-          </div><br>
-         
-    
-          <button type="submit" class="btn btn-primary ">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-  
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="Nombre" type="submit">Enviar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>

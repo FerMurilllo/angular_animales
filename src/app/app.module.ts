@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClientModule} from '@angular/common/http' 
@@ -19,6 +19,9 @@ import { AnimalesComponent } from './Componentes/Vistas/animales/animales.compon
 import { MapaComponent } from './Componentes/Vistas/mapa/mapa.component';
 import { RegistroUserComponent } from './Componentes/Auth/registro-user/registro-user.component';
 import { LoginComponent } from './Componentes/Auth/login/login.component';
+import { EspecieformComponent } from './Componentes/Formularios/especieform/especieform.component';
+import { CrearEspecieComponent } from './Componentes/Formularios/crear-especie/crear-especie.component';
+import { CrearAnimalComponent } from './Componentes/Formularios/crear-animal/crear-animal.component';
 
 
 //  AppRoutingModule,ReactiveFormsModule, FormsModule,HttpClientModule,
@@ -38,7 +41,10 @@ import { LoginComponent } from './Componentes/Auth/login/login.component';
     AnimalesComponent,
     MapaComponent,
     RegistroUserComponent,
-    LoginComponent
+    LoginComponent,
+    EspecieformComponent,
+    CrearEspecieComponent,
+    CrearAnimalComponent
   ],
   imports: [
     BrowserModule,

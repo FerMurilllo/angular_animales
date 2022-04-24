@@ -1,0 +1,20 @@
+<div class="container mt-3">
+    <h1 class="text-center">Registrar especie</h1>
+    <form [formGroup]="FormEspecie" (submit)="Enviar(FormEspecie.value)"> 
+        <div class="form-floating mb-3">
+            <input formControlName="Nombre" type="text" class="form-control" id="Especie" placeholder="Especie">
+            <label for="Especie">Nueva Especie</label>
+        </div>
+        <div *ngIf="FormEspecie.value.nombre_especie == ''">
+            <p class="text-center alert alert-danger">El Campo No Puede Estar Vacio</p>
+        </div>
+        <div class="d-grid gap-2" *ngIf="FormEspecie.value.nombre_especie == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="Especie" type="submit">Registrar</button>        
+        </div>
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="Especie" type="submit">Registrar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>

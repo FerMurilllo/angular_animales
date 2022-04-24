@@ -3,8 +3,19 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api_url: 'http://127.0.0.1:3333'
+
 };
+export const rutas = {
+  login:`${environment.api_url}/login`,
+  register:`${environment.api_url}/user`,
+  token_validacion:`${environment.api_url}/get/user`,
+  usuarios:`${environment.api_url}/user`,
+  logout:`${environment.api_url}/logout`,
+  especies:`${environment.api_url}/especies`,
+  animales:`${environment.api_url}/animales`,
+}
 
 /*
  * For easier debugging in development mode, you can import the following file

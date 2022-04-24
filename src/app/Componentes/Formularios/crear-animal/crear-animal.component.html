@@ -1,0 +1,26 @@
+<div class="container mt-3">
+    <h1 class="text-center">Registrar Animal</h1>
+    <form [formGroup]="FormAnimal" (submit)="Enviar(FormAnimal.value)"> 
+        <div class="form-floating mb-3">
+            <input formControlName="Nombre" type="text" class="form-control" id="Animal" placeholder="Animal">
+            <label for="Animal">Nuevo Animal</label>
+        </div>
+        <div *ngIf="FormAnimal.value.nombre_animal == ''">
+            <p class="text-center alert alert-danger">El Campo No Puede Estar Vacio</p>
+        </div>
+        <div class="form-floating mb-2">
+            <select formControlName="Especie" *ngIf="DatosEspecie" class="form-select" id="Especie" aria-label="Especie">
+              <option *ngFor="let especie of DatosEspecie" [value]="especie.id">{{especie.nombre_especie}}</option>
+            </select>
+            <label for="Especie">Selecciona La Especie </label>
+        </div>
+        <div class="d-grid gap-2" *ngIf="FormAnimal.value.nombre_animal == ''; else Escribio">
+            <button class="btn btn-primary text-dark" disabled id="Especie" type="submit">Registrar</button>        
+        </div>
+        <ng-template #Escribio>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary text-dark" id="Especie" type="submit">Registrar</button>
+            </div>
+        </ng-template>
+    </form>
+</div>

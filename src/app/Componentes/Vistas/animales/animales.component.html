@@ -1,23 +1,26 @@
-<div class="container mt-4" style="padding-left: 5%;">
-    <div class="row">
-        <div class="col-md-4" style="padding: 1%; " >
-        <div class="card" style="width: 18rem;">
-            <img src="../../assets/img/tigre.png" class="img-thumbnail" alt="...">
-            <div class="card-body">
-            
-            <p class="card-text text-center">
-                <span class="d-inline-block h4 align-self-center " style="max-width: 100%; text-decoration-color: darkgreen;">
-                    Tigre
-                </span>
-            </p>
-            <div class="d-grid gap-2">
-                <button class="btn btn-success" id="fondo" type="button">Ver</button>
-            </div>
-            </div>
-        </div>
-    </div>
-
+<div class="container mt-5">
+  <h1 class="text-center">A N I M A L E S               
+  </h1>
+  <button type="button" class="btn btn-success m-2" routerLink="../crearAnimal">Registrar Animal</button>
+  <table class="table table-hover table-bordered text-center">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+      
+      </tr>
+    </thead>
+    <tbody *ngIf="Datos">
+        <tr *ngFor="let animales of Datos; let i = index;">
+        <th scope="row">{{i}}</th>
+          <td>{{ animales.nombre_animal }}</td>
+          <td>{{ animales.Especies.nombre_especie }}</td>
+        
+          <td>
+            <button type="button" class="btn btn-success me-1" [routerLink]="['../Editar/Animal/', animales.id]">Editar</button>
+            <button type="button" class="btn btn-danger ms-1" (click)="Eliminar(animales.id)">Eliminar</button>
+          </td>
+        </tr>
+    </tbody>
+</table>
 </div>
-</div>
-
-            
