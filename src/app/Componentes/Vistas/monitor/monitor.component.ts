@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, startWith } from 'rxjs';
+import { delay, interval, startWith } from 'rxjs';
 import {
   trigger,
   state,
@@ -33,21 +33,57 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class MonitorComponent implements OnInit {
-  aparecer = true
+  aparecer = false
+  monitor = 999999
+  iniciar = false
+  jugadores: any[] = []
   constructor(private p:PartidaService, private activatedRouter: ActivatedRoute) {
     this.activatedRouter.params.subscribe(
       params=>{
         console.log(params['monitor'])
+        this.monitor = params['monitor']
+        this.validar1erLugar(params['monitor'])
       })
   }
 
-  contador = interval(2000).subscribe((tiempo)=>{
-
+  contador = interval(500).subscribe((tiempo)=>{
+    this.p.estado(this.monitor).subscribe(respuesta=>{
+      console.log(respuesta)
+    })
   })
-  ngOnInit(): void {
 
-    // this.p.juego()
+  contador2 = interval(4500).subscribe((tiempo)=>{
+    this.jugadores.monitor!.forEach(element => {
+      setTimeout(() => {
+      this.aparecer = false;
+    }, 4500);
+    });
+    this.p.comprobar().subscribe(respuesta=>{
+      console.log(respuesta)
+    })
+  })
+
+  validar1erLugar(monitor:number){
+    this.p.validarLugar(monitor).subscribe(respuesta=>{
+      if(respuesta.data){
+        this.iniciar= true
+      }
+    })
   }
 
+  ngOnInit(): void {
+    // this.contador
+    // this.p.juego()
+  }
+  empezar(){
+    this.p.iniciar(this.monitor).subscribe(respuesta=>{
+      console.log("esta respuesta",respuesta)
+      this.jugadores= respuesta.data!
+      this.aparecer = true;
+      setTimeout(() => {
+        this.aparecer = false;
+      }, 4500);
+    })
+  }
 
 }

@@ -24,4 +24,19 @@ export class PartidaService {
   entrar(monitor:number): Observable<any>{
     return this.http.post<R0>(rutas.entrar,{monitor}, {headers:this.header})
   }
+  validarLugar(monitor:number): Observable<any>{
+    return this.http.post<R0>(rutas.primero,{monitor:monitor}, {headers:this.header})
+  }
+
+  iniciar(monitor:number): Observable<any>{
+    return this.http.post<R0>(rutas.iniciar,{monitor:monitor}, {headers:this.header})
+  }
+
+  comprobar(monitor:number): Observable<any>{
+    return this.http.post<R0>(rutas.comprobar,{monitor:monitor}, {headers:this.header})
+  }
+
+  estado(monitor1:number,monitor2:number, ): Observable<any>{
+    return this.http.post<R0>(rutas.estado,{monitor_viejo:monitor1,monitor_nuevo:monitor2,}, {headers:this.header})
+  }
 }

@@ -14,7 +14,11 @@ export const rutas = {
   token_validacion:`${environment.api_url}/get/user`,
   usuarios:`${environment.api_url}/users`,
   logout:`${environment.api_url}/logout`,
-  entrar:`${environment.api_url}/entrar`
+  entrar:`${environment.api_url}/entrar`,
+  primero:`${environment.api_url}/primero`,
+  iniciar:`${environment.api_url}/iniciar`,
+  comprobar:`${environment.api_url}/comprobar`,
+  estado:`${environment.api_url}/get/estado`
 
 }
 
