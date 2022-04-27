@@ -47,20 +47,20 @@ export class MonitorComponent implements OnInit {
   }
 
   contador = interval(500).subscribe((tiempo)=>{
-    this.p.estado(this.monitor).subscribe(respuesta=>{
-      console.log(respuesta)
-    })
+    // this.p.estado(this.monitor).subscribe(respuesta=>{
+    //   console.log(respuesta)
+    // })
   })
 
   contador2 = interval(4500).subscribe((tiempo)=>{
-    this.jugadores.monitor!.forEach(element => {
-      setTimeout(() => {
-      this.aparecer = false;
-    }, 4500);
-    });
-    this.p.comprobar().subscribe(respuesta=>{
-      console.log(respuesta)
-    })
+    // this.jugadores.monitor!.forEach(element => {
+    //   setTimeout(() => {
+    //   this.aparecer = false;
+    // }, 4500);
+    // });
+    // this.p.comprobar().subscribe(respuesta=>{
+    //   console.log(respuesta)
+    // })
   })
 
   validar1erLugar(monitor:number){
