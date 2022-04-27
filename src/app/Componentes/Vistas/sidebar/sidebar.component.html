@@ -1,26 +1,25 @@
 <div  class="offcanvas offcanvas-end text-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div id="canvasOff1" class="offcanvas-header">
-      <h5 class="offcanvas-title " id="offcanvasExampleLabel">Menu</h5>
+      <h5 class="offcanvas-title " id="offcanvasExampleLabel"></h5>
       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div id="canvasOff2" class="offcanvas-body text-dark">
       
-      <div class="text-center m-5" >
-        Bienvendio: 
+      <div *ngIf="!getToke() == false ? true : false" class="text-center m-5" >
+        Bienvendio
       </div>
       <div >
         <div class="d-grid gap-2">
           <button class="btn btn-outline-dark" type="button" routerLink="../login">Iniciar Sesion</button>
-          <button class="btn btn-outline-dark" type="button" routerLink="../registro-user">Registrarse</button>
         </div>
       </div>
 
-      <div >
-    
+
+      <div *ngIf="!getToke() == false ? true : false">
+        <button class="btn btn-outline-danger" type="button" routerLink="../registrar" (click)="sesionCerrar()">Cerrar Sesion</button>
+
       </div>
-
-
-
     </div>
   </div>
+
 

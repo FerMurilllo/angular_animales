@@ -13,22 +13,18 @@
         <div class="align-self-center collapse navbar-collapse " id="templatemo_main_nav">
             <div class="flex-fill" >
                 <ul  class="nav navbar-nav d-flex mx-lg-auto" style="padding-left: 1cm;">
+                    
                     <li class="nav-item" style="padding-left: 1cm;">
-                        <a id="bodyF"  class="nav-link  logo "  href="index.html">Inicio</a>
+                        <a id="bodyF" class="nav-link" routerLink="/home">Home</a>
                     </li>
-                    <li class="nav-item" style="padding-left: 1cm;">
-                        <a id="bodyF" class="nav-link" routerLink="/form-especies">Lista especies</a>
+                    
+                    <li *ngIf="!getToke() == false ? true : false"  class="nav-item" style="padding-left: 1cm;">
+                        <a id="bodyF" class="nav-link" routerLink="/Partidas">Partidas Disponibles</a>
                     </li>
-                    <li class="nav-item" style="padding-left: 1cm;">
-                        <a id="bodyF" class="nav-link" routerLink="/animales">Lista animales</a>
+                    <li *ngIf="!getToke() == false ? true : false"  class="nav-item" style="padding-left: 1cm;">
+                        <a id="bodyF" class="nav-link" routerLink="/monitor">Monitor</a>
                     </li>
-                    <li  class="nav-item" style="padding-left: 1cm;">
-                        <a id="bodyF" class="nav-link" routerLink="/mapa"> Mapa</a>
-                    </li>
-                    <li class="nav-item" style="padding-left: 1cm;">
-                        <a id="bodyF" class="nav-link" routerLink="/about">Nosotros</a>
-                    </li>
-                
+            
                     
                 </ul>
             </div>

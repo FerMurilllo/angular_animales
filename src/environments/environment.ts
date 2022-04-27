@@ -9,12 +9,11 @@ export const environment = {
 };
 export const rutas = {
   login:`${environment.api_url}/login`,
-  register:`${environment.api_url}/user`,
+  register:`${environment.api_url}/users`,
   token_validacion:`${environment.api_url}/get/user`,
-  usuarios:`${environment.api_url}/user`,
-  logout:`${environment.api_url}/logout`,
-  especies:`${environment.api_url}/especies`,
-  animales:`${environment.api_url}/animales`,
+  usuarios:`${environment.api_url}/users`,
+  logout:`${environment.api_url}/logout`
+
 }
 
 /*

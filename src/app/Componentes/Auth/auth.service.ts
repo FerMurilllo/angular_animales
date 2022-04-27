@@ -1,93 +1,89 @@
-/*
+
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
 import { Observable, Subject, tap } from 'rxjs';
+import { ResponseI } from 'src/app/Modelos/Response.interface';
 import { rutas } from 'src/environments/environment';
-import { R0, Usuario} from '../../Modelos/usuarios.response';
+import { LoginI, R0, RespuestaI, Usuario} from '../../Modelos/usuarios.response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  UsusarioActivo = false;
+  CorreoUser = "";
+  idUser = "";
+  userName = ""; 
+  aprobado = true;  
+  tipoUser = "";
+
+
   constructor(
-    private http: HttpClient,
-    private _cookieService: CookieService) 
+    private http: HttpClient) 
   {
   }
 
-  login(info: Usuario): Observable<any>{
-    return this.http.post<R0>(rutas.login, info)
+  login(form: LoginI): Observable<any>{
+    return this.http.post<ResponseI>(rutas.login, form)
   }
   
   register(info: Usuario): Observable<any>{
-    return this.http.post<R0>(rutas.register, info)
+    return this.http.post<Usuario>(rutas.register, info)
+  }
+
+  logout(token: any, body=""){
+    localStorage.removeItem("Token")
+    this.http.post(rutas.logout,body);
   }
 
   
-  getUsuario(): Observable<any>{
-    return this.http.get<R0>(rutas.token_validacion)
+  getUser(): Observable<any>{
+    return this.http.get<Usuario>(rutas.token_validacion)
+  }
+  sacarUserAll(id:string){
+    let endpoint = rutas.usuarios + '/' + id; 
+    return this.http.get<ResponseI>(endpoint);
+  }
+  sacarUser(email:string){
+    let endpoint = rutas.usuarios + '/' + email; 
+    return this.http.get<ResponseI>(endpoint);
   }
 
-  setToken(token: string): void {
-    this._cookieService.set('token',token,4,'/')
-  }
+
 
   
-
-  removeToken(): void {
-    this._cookieService.delete('token');
+  getIndexUser():Observable<ResponseI>{
+    const u = rutas.usuarios + '/' ; 
+    return this.http.get<ResponseI>(u); 
   }
 
-  isLoggedIn() {
-    return !!this.getJwtToken();
+  postStoreUser(User : Usuario):Observable<ResponseI>{
+    const u = rutas.usuarios + '/' ; 
+    return this.http.post<ResponseI>(u, User); 
+  }
+
+  getShowUser(id : number):Observable<ResponseI>{
+    const u = rutas.usuarios + '/' + id; 
+    return this.http.get<ResponseI>(u); 
+  }
+
+  putUpdateUser(id : number, User : any):Observable<ResponseI>{
+    const u = rutas.usuarios + '/' + id; 
+    return this.http.put<ResponseI>(u, User); 
+  }
+
+  deleteDestroyUser(id : number):Observable<ResponseI>{
+    const u = rutas.usuarios + '/' + id; 
+    return this.http.delete<ResponseI>(u); 
+  }
+
+  //GUARDAR DATOS LOCAL
+  setToken(token : string){
+    localStorage.setItem("Token", token);
+  }
+
+  getToken(){
+    console.log(localStorage.getItem("Token")); 
+    return localStorage.getItem("Token");
   }
 }
-
-/*
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment.prod';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { User } from 'src/app/models/user';
-import { LUser } from 'src/app/models/loginuser';
-
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-  apiURL=environment.apiURL;
-  constructor(private http:HttpClient) { }
-  gettoken(){
-    return this.http.get<any>(`${this.apiURL}srevisarToken`);
-  }
-  registro(user:User):Observable<any>{
-    return this.http.post(`${this.apiURL}Register`,user);
-  }
-
-  login(user:LUser):Observable<any>{
-    return this.http.post(`${this.apiURL}Login`,user);
-  }
-
-  //usuarios
-  getUsuarios(){
-    return this.http.get<User[]>(`${this.apiURL}usuario`);
-  }
-  addUsuario(usuario:User){
-    return this.http.post(`${this.apiURL}register`,usuario);
-  }
-  getUsuario(id:number|string|null){
-    return this.http.get(`${this.apiURL}usuario/${id}`);
-  }
-  deletUsuario(id:string){
-    return this.http.delete(`${this.apiURL}usuario/${id}`);
-  }
-  updateUsuario(updateUsuario:User):Observable<User>{
-    return this.http.patch<User>(`${this.apiURL}editarUser/${updateUsuario.id}`,updateUsuario)
-  } 
-  getUsuariobyToken(t:any):Observable<any>{
-    return this.http.get(`${this.apiURL}usuario`,t);
-  }
-}
-
-*/

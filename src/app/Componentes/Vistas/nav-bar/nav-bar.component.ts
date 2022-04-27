@@ -11,5 +11,10 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  getToke(){
+    if(localStorage.getItem('Token') != null){
+      return true;
+    }
+    return false;
+  }
 }

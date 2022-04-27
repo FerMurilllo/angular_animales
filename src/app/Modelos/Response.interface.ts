@@ -1,7 +1,7 @@
 export interface ResponseI {
 
-    status : boolean, 
-    message : string,
-    data : any
+    status : boolean;
+    message : any;
+    data : any;
 
 }

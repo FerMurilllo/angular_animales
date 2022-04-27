@@ -1,20 +1,25 @@
 export interface Usuarios {
     id: number,
-    rol_id: number,
     username: string,
     email: string,
     password: string
 }
 
+export interface UsuarioI {
+    id : number, 
+    username : string, 
+ 
+}
 export interface Usuario {
-    rol_id: number,
-    username: string,
-    email: string,
-    password: string
+    username?: string;
+    password?: string;
+    email?:string;
+    rol?: string;
 }
 
 export interface R1 {
-      user: Usuario;
+      usuario: Usuario;
+      
 }
 export interface UserResponse{
     type: string,
@@ -26,3 +31,14 @@ export interface R0 {
       users: Usuarios[];
 }
     
+export interface RespuestaI {
+
+    status : any, 
+    message : any,
+    data : any
+
+}
+export interface LoginI {
+    email:string;
+    password:string;
+}
