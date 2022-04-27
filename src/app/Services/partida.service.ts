@@ -32,11 +32,11 @@ export class PartidaService {
     return this.http.post<R0>(rutas.iniciar,{monitor:monitor}, {headers:this.header})
   }
 
-  comprobar(monitor:number): Observable<any>{
-    return this.http.post<R0>(rutas.comprobar,{monitor:monitor}, {headers:this.header})
+  comprobar( monitor1:number,monitor2:number,): Observable<any>{
+    return this.http.post<R0>(rutas.comprobar,{monitor_viejo:monitor1,monitor_nuevo:monitor2,}, {headers:this.header})
   }
 
-  estado(monitor1:number,monitor2:number, ): Observable<any>{
-    return this.http.post<R0>(rutas.estado,{monitor_viejo:monitor1,monitor_nuevo:monitor2,}, {headers:this.header})
+  estado(monitor:number ): Observable<any>{
+    return this.http.post<R0>(rutas.estado,{monitor:monitor}, {headers:this.header})
   }
 }
