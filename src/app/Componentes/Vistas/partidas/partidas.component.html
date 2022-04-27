@@ -2,7 +2,7 @@
     <div class="row">
       <div class="col">
         <button type="" >Nueva partida</button>
-       
+
         <h3>PARTIDAS DISPONIBLES</h3>
         <br>
         <table class="table" style="width: 50%">
@@ -10,7 +10,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Partida</th>
-             
+
               <th scope="col"></th>
             </tr>
           </thead>
@@ -18,16 +18,17 @@
             <tr>
               <th scope="row">1</th>
               <td>Barquito</td>
-             
+
               <td>
-                <button class="btn btn-info">unirse</button>
+                <input type="number" name="monitor" id="monitor" [(ngModel)]="monitor" />
+                <button (click)="jugar()" class="btn btn-info">unirse</button>
               </td>
-  
-              
+
+
             </tr>
           </tbody>
-  
+
         </table>
-      
-  
+
+
       </div>

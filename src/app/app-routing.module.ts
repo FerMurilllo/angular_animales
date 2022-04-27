@@ -14,11 +14,11 @@ const routes: Routes = [
     {path:'login', component: LoginComponent},
     {path:'home', component: HomeComponent, canActivate: [UserGuardGuard, TokenGuardGuard]},
     {path:'registrarse', component: RegistroUserComponent},
-   
+
     {path:'sidebar', component: SidebarComponent},
     {path:'Partidas', component: PartidasComponent, canActivate: [UserGuardGuard, TokenGuardGuard]},
-    {path: 'monitor', component:MonitorComponent, canActivate: [UserGuardGuard, TokenGuardGuard]}
-  
+    {path: 'monitor/:monitor', component:MonitorComponent, canActivate: [UserGuardGuard, TokenGuardGuard]}
+
 ];
 
 @NgModule({

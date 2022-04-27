@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  api_url: 'http://127.0.0.1:3333'
+  // api_url: 'http://127.0.0.1:3333'
+  api_url: 'http://192.168.1.11:3333'
 
 };
 export const rutas = {
@@ -12,7 +13,8 @@ export const rutas = {
   register:`${environment.api_url}/users`,
   token_validacion:`${environment.api_url}/get/user`,
   usuarios:`${environment.api_url}/users`,
-  logout:`${environment.api_url}/logout`
+  logout:`${environment.api_url}/logout`,
+  entrar:`${environment.api_url}/entrar`
 
 }
 

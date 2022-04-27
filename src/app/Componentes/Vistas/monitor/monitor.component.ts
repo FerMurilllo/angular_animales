@@ -9,6 +9,8 @@ import {
   keyframes,
   // ...
 } from '@angular/animations';
+import { PartidaService } from 'src/app/Services/partida.service';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-monitor',
   templateUrl: './monitor.component.html',
@@ -21,20 +23,30 @@ import {
       opacity: 1
     })),
     transition(":enter", [
-      animate(900, style({
-        transform:"translateX(0)",
+      animate(4500, style({
+        transform:"translateX(250%)",
         opacity:1
       }))
     ])
   ])],
-  
+
 })
 
 export class MonitorComponent implements OnInit {
+  aparecer = true
+  constructor(private p:PartidaService, private activatedRouter: ActivatedRoute) {
+    this.activatedRouter.params.subscribe(
+      params=>{
+        console.log(params['monitor'])
+      })
+  }
 
-  constructor() { }
+  contador = interval(2000).subscribe((tiempo)=>{
 
+  })
   ngOnInit(): void {
+
+    // this.p.juego()
   }
 
 
